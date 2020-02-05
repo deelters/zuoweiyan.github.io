@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>javascript幸运转盘</title>
+<style type="text/css">
+	#frame{
+		font-size: 26px;
+		width:600px;
+		height: 400px;
+		margin:0 auto;
+	}	
+	#blank{
+		float:left;
+		border-style: solid;
+		text-align:center;
+		line-height: 120px;
+		margin-left: 5px;
+		width: 120px;
+		height: 120px;
+		font-size: 17px;
+	}
+	#col{
+		width: 500px;
+		height:140px;
+		margin:0 auto;
+	}
+	p{
+		margin-left: 180px;
+	}
+	#button{
+		width: 50px;
+		height:50px;
+		margin-left:500px;
+		margin-top:50px; 
+	}
+</style>
+<script type="text/javascript">
+	var i=0,count=0,key=0,pos=[0,1,2,5,8,7,6,3];
+	var timer;
+	var blank=document.getElementsByClassName("bl");
+	function run(){
+		//document.getElementById("test").innerHTML=blank.length;
+		if(count==key) 
+		{
+			if(i==2 || i==7)
+			return;
+		}
+		if(i>=1) blank[pos[i-1]].style.background="white";
+		if(i==8) i=0;
+		blank[pos[i]].style.background="red";
+		blank[4].innerHTML=blank[pos[i]].innerHTML;
+		i++;
+		if(count!=key) count++;
+	}
+
+	function start(){
+		clearInterval(timer);
+		key=Math.floor(Math.random()*(50-10+1)+10);
+		count=0;
+		timer=setInterval(function(){run();},150);
+	}
+</script>
+</head>
+<body>
+<div id="frame">
+	<p>幸运大转盘</p>
+	<div id="col">
+	    <div id="blank" class="bl">ipad pro</div>
+	    <div id="blank" class="bl">谢谢参与</div>
+	    <div id="blank" class="bl">Switch游戏机</div>
+	</div>
+	<div id="col">
+		<div id="blank" class="bl">天猫精灵</div>
+	    <div id="blank" class="bl" style="background: skyblue">幸运抽奖</div>
+	    <div id="blank" class="bl">1000MA充电宝</div>
+	</div>
+	<div id="col">
+		<div id="blank" class="bl">谢谢参与</div>
+	    <div id="blank" class="bl">华为Mate30</div>
+	    <div id="blank" class="bl">金条一根</div>
+	</div>
+	<div id="button">
+		<button onclick="start();">开始抽奖</button>
+	</div>
+	<p id="test"></p>
+</div>
+</body>
+</html>
