@@ -36,7 +36,7 @@
 	}
 </style>
 <script type="text/javascript">
-	var i=0,count=0,key=0,pos=[0,1,2,5,8,7,6,3];
+	var flag=0,i=0,count=0,key=0,pos=[0,1,2,5,8,7,6,3];
 	var timer;
 	var blank=document.getElementsByClassName("bl");
 	function run(){
@@ -44,7 +44,13 @@
 		if(count==key) 
 		{
 			if(i==2 || i==7)
+			{
+			if(flag==0){
+				alert("哎，骚gey差一点点就中奖了耶，再试试吧！");
+				flag=1;
+			}
 			return;
+			}
 		}
 		if(i>=1) blank[pos[i-1]].style.background="white";
 		if(i==8) i=0;
@@ -58,6 +64,7 @@
 		clearInterval(timer);
 		key=Math.floor(Math.random()*(50-10+1)+10);
 		count=0;
+		flag=0;
 		timer=setInterval(function(){run();},150);
 	}
 </script>
